@@ -5,8 +5,9 @@ const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const fname = document.getElementById('fname');
 const lname = document.getElementById('lname');
+const dob = document.getElementById('dob');
 
-// valid email format
+//valid email format
 const isValidEmail = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$/;
    return re.test(String(email).toLowerCase());
@@ -17,6 +18,9 @@ var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 // valid name characters
 var namechar = /^[a-zA-Z-,]+(\s{0,1}[ '.\a-zA-Z-, ])*$/;
+
+//valid date format
+var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 
 // adding event listener upon clicking on the input field and/or submitting
  form.addEventListener('change', e => {
@@ -61,6 +65,7 @@ const validateInputs = () => {
     const password2Value=password2.value.trim();
     const fnameValue=fname.value.trim();
     const lnameValue=lname.value.trim();
+    const dobValue=dob.value.trim();
 
     if(emailValue === '') {
         setError(email, 'Email is required');
@@ -102,4 +107,10 @@ const validateInputs = () => {
         setError(lname, 'Last name should only include letters, apostrophes, spaces, and hypens');
     }
 
+    if(dobValue==='') {
+        setError(dob, 'Enter valid date');
+    } else (dobValue.value.match(dateformat)); {
+        setSuccess(dob)
+    } 
+    
 };
