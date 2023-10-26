@@ -285,3 +285,45 @@ th, td {
     border: none;
     background: #f1f1f1;
   }
+
+  input[type=password] {
+    width: 95%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  /* styling the error messages */
+  .input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+/* error mesage */
+.input-control .error {
+    color: #ff3860;
+    font-size: small;
+}
+

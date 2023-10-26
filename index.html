@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script defer src="validation.js"></script>
     
     <!--inputting fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,6 @@
     <header>
         <div class="container1">
             <img src = "images/logo3.png" alt="logo" class="logo" width="85" height="85">
-            <!--<label class="logo">Health CodeX Workshop 2023</label>-->
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -87,6 +87,50 @@
         </div>
 
         <h1>  </h1>
+
+        <!--setting up a new card for the registration form-->
+        <div class="card-single">
+            <div class="card">
+                <div class="card-header">ATTENTION !! WE ARE SEEKING APPLICATIONS FOR A WORKSHOP DELEGATE !! ATTENTION</div>
+                <div class="card-body"> <!--writing filler text for the body of the card-->
+                    Are you looking to get involved in and gain experience on workshop management? Please register your interest using the form below! 
+                    No previous experience is required, only your interest in public health management and classification systems. 
+                    Please register your interest by 30th Oct 2025. <br> We look forward to reviewing your applications. 
+                    <form id="form" onSubmit="return validInfo()" method="GET" action="regSuccess.html" class="card1">
+                        <h2>Login Details</h2>
+                        <div class="input-control">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="text" placeholder="example@gmail.com">
+                            <div class="error"></div>
+                        </div>
+                        <div class="input-control">
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" placeholder="lalalala">
+                            <div class="error"></div>
+                        </div>
+                        <div class="input-control">
+                            <label for="password2">Re-enter Password</label>
+                            <input id="password2" name="password2" type="password" placeholder="lalalala">
+                            <div class="error"></div>
+                        </div>
+                        <h2>User Details</h2>
+                        <div class="input-control">
+                            <label for="fname">First Name</label>
+                            <input id="fname" name="fname" type="text" placeholder="lalalala">
+                            <div class="error"></div>
+                        </div>
+                        <div class="input-control">
+                            <label for="lname">Last Name</label>
+                            <input id="lname" name="lname" type="text" placeholder="lalalala">
+                            <div class="error"></div>
+                        </div>
+                        <input type="submit" button class="btn" value="Register Now"> <!--submit button-->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <h1></h1>
 
         <div class="card-grid">
             <div class="card">
