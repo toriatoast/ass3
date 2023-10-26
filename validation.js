@@ -16,7 +16,7 @@ const isValidEmail = email => {
 var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 // valid name characters
-var name = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]$/;
+var namechar = /^[a-zA-Z-,]+(\s{0,1}[ '.\a-zA-Z-, ])*$/;
 
 // adding event listener upon clicking on the input field and/or submitting
  form.addEventListener('change', e => {
@@ -59,6 +59,8 @@ const validateInputs = () => {
     const emailValue=email.value.trim();
     const passwordValue=password.value.trim();
     const password2Value=password2.value.trim();
+    const fnameValue=fname.value.trim();
+    const lnameValue=lname.value.trim();
 
     if(emailValue === '') {
         setError(email, 'Email is required');
@@ -71,7 +73,7 @@ const validateInputs = () => {
     if(passwordValue === '') {
         setError(password, 'Password is required');
     } else if (password.value.match(passw)) {
-        setSuccess(password)
+        setSuccess(password);
     } else {
         setError(password, 'Password must contain 8 characters, and include number, upper case, and lower case letter.');
     }
@@ -83,4 +85,21 @@ const validateInputs = () => {
     } else {
         setSuccess(password2);
     }
+
+    if(fnameValue === '') {
+        setError(fname, 'First name is required');
+    } else if (fname.value.match(namechar)) {
+        setSuccess(fname)
+    } else {
+        setError(fname, 'First name should only include letters, apostrophes, spaces, and hypens');
+    }
+
+    if(lnameValue === '') {
+        setError(lname, 'Last name is required');
+    } else if (lname.value.match(namechar)) {
+        setSuccess(lname)
+    } else {
+        setError(lname, 'Last name should only include letters, apostrophes, spaces, and hypens');
+    }
+
 };
