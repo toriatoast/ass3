@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Health CodeX Workshop 2023</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container1">
+            <img src = "images/logo3.png" alt="logo" class="logo" width="85" height="85">
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="program.html">Programs</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <h1>  </h1>
+    <div class="container">
+        <div class="card-single">
+            <div class="card">
+                <div class="card-header">Plenary Session 2: <br /> Health messaging standards using HL7</div>
+                <div class="card-body">
+                    <h2><u>What is HL7? </u></h2>
+                    <p>The Health Level 7 (HL7) is a set of messaging rules and guidelines developed by the Health Level Seven International not-for-profit organization [1]. 
+                        The purpose of HL7 is to improve the exchange of health information by providing a standardized framework that ensures readability and seamless integration 
+                        across different operating systems [2]. Consequently, the standard streamlines healthcare communication and improved patient outcomes.  
+                    </p>
+                    <p>It is important to note that the HL7 only provides a way to structure health messages but does not explain how it should be stored in different systems. 
+                        Furthermore, there is room for messaging customization within the standard which allows for more accurate reflection of health status and information [3].  </p>
+                    <p>Like other standards, the HL7 is constantly being revised and modified to more accurately reflect industry landscape and maintain relevancy. 
+                        The most recent revision is HL7 V3, however as it is not backwards compatible healthcare organizations are still reluctant to apply it [3,4]. 
+                        HL7 V2 is the more common version of HL7 used as it is customizable and backwards compatible. FHIR is another adaptation of the original HL7 that leverages the best 
+                        features from HL7 V2 and V3 and the latest web service technology. For more information on the differences between HL7 and FHIR look to the resources below.  </p>
+                    
+                    <h2><u>Why is HL7 important? </u></h2>
+                    <p>More often than not, patients will visit more than one physician from other organisations, and it is common for research institutes to communicate 
+                        information with each of their own operating systems. To ensure efficient care, healthcare providers must have access to the EHR, and these records must be legible 
+                        for multiple authorised personnel to read. HL7 overcomes this challenge by providing a standardised framework for information to be displayed, exchanged, and retrieved. 
+                        It also provides guidelines to ensure seamless integration of information from different operating systems, thus improving workflow and reducing transfer issues. 
+                        With access to patient EHRs, physicians can make better-informed decisions and provide improved personalised healthcare. Ensuring readability also minimises misdiagnoses. </p>
+                    
+                    <h2><u>How does Hl7 work? </u></h2>
+                    <p>An HL7 message has the following structure key points [5]. 
+                        <ul>
+                            <li>HL7 messages are composed of segments and each segment consists of one more composite or fields.  </li>
+                            <li>Each segment begins with a three-unit code (typically three alphas) also known as the segment ID.  </li>
+                            <li>Segments are written on new line of text. </li>
+                            <li>Composites are separated by pipe | and if the composite is composed of sub-composites, then they are separated by carets ^. </li>
+                            <li>Composites contains the message components.  </li>
+                        </ul>
+                    </p>
+                    <p>To learn more about HL7 message structure watch the video below. </p>
+
+                    <iframe width="500" height="345" src="https://www.youtube.com/embed/voHtq77wRDU">
+                    </iframe>
+
+                    <h2>Resources:</h2>
+                    <a href="https://www.paessler.com/it-explained/hl7  ">HL7</a> <br>
+                    <a href="https://rhapsody.health/blog/fhir-vs-hl7-explained/#HL7differentiators  ">HL7 vs FHIR</a>
+
+                    <h2>References:</h2>
+                    <p>[1]Rhapsody Health Solutions Team, “What is HL7? - An Overview of HL7 Standard,” Rhapsody, Apr. 04, 2021. https://rhapsody.health/blog/what-is-hl7/#:~:text=Health%20Level%2D7%20(HL7) (accessed Oct. 16, 2023).<br>
+                        [2]“Australian Digital Health Agency signs agreement with HL7 Australia to help connect Australia’s healthcare system,” www.digitalhealth.gov.au, 2022. https://www.digitalhealth.gov.au/newsroom/media-releases/australian-digital-health-agency-signs-agreement-with-hl7-australia-to-help-connect-australias-healthcare-system<br>
+                        [3]“What is HL7? Definition and Details,” www.paessler.com. https://www.paessler.com/it-explained/hl7<br>
+                        [4]W. Goossen and L. H. Langford, “Exchanging care records using HL7 V3 care provision messages,” Journal of the American Medical Informatics Association, vol. 21, no. e2, pp. e363–e368, Oct. 2014, doi: https://doi.org/10.1136/amiajnl-2013-002264.<br>
+                        [5]iNTERFACEWARE Inc, “HL7 Message Structure,” www.interfaceware.com. https://www.interfaceware.com/hl7-message-structure</p>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <h1></h1>
+
+    <!--contact section in the footer of the website-->
+    <footer>
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:codingwithus@gmail.com">codingwithus@gmail.com</a></p>
+        <p>Phone Number:(555) 123-4567</p>
+        <p>Address: University of New South Wales, Randwick Campus, 22/32 King St, Randwick NSW 2031</p>
+    </footer>
+
+</body>
+
+</html>
