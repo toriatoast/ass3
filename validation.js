@@ -25,7 +25,7 @@ var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 //setting up valid date format function
 function isValidDate(dateString)
 {
-    // First check for the pattern
+    // First check for the pattern to match dd/mm/yyyy format
     if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
         return false;
 
@@ -71,15 +71,9 @@ const setSuccess = (element) => {
     inputControl.classList.remove('error');
 };
 
-// validate the values on all the input fields
-const validateInputs = () => {
-    const emailValue=email.value.trim();
-    const passwordValue=password.value.trim();
-    const password2Value=password2.value.trim();
-    const fnameValue=fname.value.trim();
-    const lnameValue=lname.value.trim();
-    const dobValue=dob.value.trim();
-
+// validating email function
+const validateEmail = () => {
+    const emailValue=email.value.trim(); //trim is used to get rid of the white space
     if(emailValue === '') {
         setError(email, 'Email is required'); 
     } else if (!isValidEmail(emailValue)) {
@@ -87,7 +81,11 @@ const validateInputs = () => {
     } else {
         setSuccess(email); 
     }
+}
 
+// validating password function
+const validatePassword = () => {
+    const passwordValue=password.value.trim();
     if(passwordValue === '') {
         setError(password, 'Password is required'); 
     } else if (password.value.match(passw)) {
@@ -95,7 +93,12 @@ const validateInputs = () => {
     } else {
         setError(password, 'Password must contain 8 characters, and include number, upper case, and lower case letter.'); 
     }
+}
 
+// validating repeat password function
+const validatePassword2 = () => {
+    const password2Value=password2.value.trim();
+    const passwordValue=password.value.trim();
     if(password2Value === '') {
         setError(password2, 'Please confirm your password'); 
     } else if (password2Value !== passwordValue) {
@@ -103,7 +106,11 @@ const validateInputs = () => {
     } else {
         setSuccess(password2); 
     }
+}
 
+//validating first name function
+const validateFname = () => {
+    const fnameValue=fname.value.trim();
     if(fnameValue === '') {
         setError(fname, 'First name is required'); 
     } else if (fname.value.match(namechar)) {
@@ -111,7 +118,11 @@ const validateInputs = () => {
     } else {
         setError(fname, 'First name should only include letters, apostrophes, spaces, and hypens');
     }
+}
 
+//validation last name function
+const validateLname = () => {
+    const lnameValue=lname.value.trim();
     if(lnameValue === '') {
         setError(lname, 'Last name is required'); 
     } else if (lname.value.match(namechar)) {
@@ -119,7 +130,11 @@ const validateInputs = () => {
     } else {
         setError(lname, 'Last name should only include letters, apostrophes, spaces, and hyphens');
     }
- 
+}
+
+// validating DOB function
+const validateDOB = () => {
+    const dobValue=dob.value.trim();
     if (dobValue === '') {
         setError(dob, 'Date of Birth is required');
     } else if (!isValidDate(dobValue)) {
@@ -127,28 +142,32 @@ const validateInputs = () => {
     } else {
         setSuccess(dob);
     }
+}
 
-};
-
-// Create an array of input elements
-const inputElements = [email, password, password2, fname, lname, dob];
-
-// Add event listeners to each input element
-inputElements.forEach((inputElement) => {
-    inputElement.addEventListener('change', () => {
-        validateInputs(inputElement);
-    });
-});
+//Add event listeners to each field using validation function to immediately validate field
+email.addEventListener('change', validateEmail);
+password.addEventListener('change', validatePassword);
+password2.addEventListener('change', validatePassword2);
+fname.addEventListener('change', validateFname);
+lname.addEventListener('change', validateLname);
+dob.addEventListener('change', validateDOB);
 
 
-//Add event listener for when submit button is clicked
+
+ //Add event listener for when submit button is clicked
 form.addEventListener('submit', l => {
     l.preventDefault(); //prevent the form submitting before validating the inputs
 
-    validateInputs(); //validate inputs function
+    // validate inputs functions
+    validateEmail();
+    validatePassword();
+    validatePassword2();
+    validateFname();
+    validateLname();
+    validateDOB();
 
     if (document.querySelectorAll('.success').length === 6) {
-        // submit the form
-        form.submit();
-    } 
- });
+         // submit the form
+         form.submit();
+     } 
+  });
