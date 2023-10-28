@@ -246,7 +246,17 @@ th, td {
     color: white;
   }
 
+  textarea[id=message] {
+    width: 95%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
 /* styling the forms */
+/* making specific cards for forms so that colour and size are different */
   .card1 {
     padding-top: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -259,16 +269,8 @@ th, td {
     margin: 0 auto;
   }
 
+/* styling the field boxes to appropriately fit the cards and changing bg colour */
   input[type=text] {
-    width: 95%;
-    padding: 15px;
-    margin: 5px 0 20px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-
-  textarea[id=message] {
     width: 95%;
     padding: 15px;
     margin: 5px 0 20px 0;
@@ -296,28 +298,29 @@ th, td {
   }
 
   /* styling the error messages */
-  .input-control {
+.input-control {
     display: flex;
     flex-direction: column;
 }
 
-.input-control input {
+/* styling the input elements inside input control container */
+ .input-control input {
     border: 2px solid #f0f0f0;
 	border-radius: 4px;
 	display: block;
 	font-size: 12px;
 	padding: 10px;
-	
-}
+} 
 
+/* styling when clicked */
 .input-control input:focus {
     outline: 0;
 }
-
+/* success border colour */
 .input-control.success input {
     border-color: #09c372;
 }
-
+/* error border colour */
 .input-control.error input {
     border-color: #ff3860;
 }

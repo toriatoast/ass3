@@ -23,63 +23,68 @@ var namechar = /^[a-zA-Z-,]+(\s{0,1}[ '.\a-zA-Z-, ])*$/;
 var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 
 //setting up valid date format function
-function isValidDate(dateString)
-{
+function isValidDate(dateString) {
     // First check for the pattern to match dd/mm/yyyy format
     if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
-        return false;
+    return false;
 
-    // Parse the date parts to integers
-    var parts = dateString.split("/");
-    var day = parseInt(parts[1], 10);
-    var month = parseInt(parts[0], 10);
-    var year = parseInt(parts[2], 10);
+    //Pase the date parts into integers
+    var datePart =dateString.split("/"); //using '/' to separate the day, month, and year
+    var day=parseInt(datePart[0]); //identifying the order of the date input day position 0
+    var month=parseInt(datePart[1]); //month position 1
+    var year=parseInt(datePart[2]); //year position 2
 
-    // Check the ranges of month and year
-    if(year < 1000 || year > 3000 || month == 0 || month > 12)
-        return false;
-
-    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-    // Adjust for leap years
-    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-        monthLength[1] = 29;
-
-    // Check the range of the day
-    return day > 0 && day <= monthLength[month - 1];
+    //creating date object and check if valid date
+    var date = new Date(year, month-1, day); //month starts on 0 where 0=January
+    if (
+        date.getFullYear()=== year && date.getMonth() == month -1 && date.getDate() === day //checking for if the date exists
+    ) {
+        //additional requirement DOB not too far in the past nor future date
+        const todayDate = new Date();
+        const maxAge = new Date(todayDate);
+        maxAge.setFullYear(todayDate.getFullYear()-80); // Allowing up to 80 years old
+        if(date <=todayDate && date>=maxAge) {
+        return true; }
+    }
+    return false;
 };
 
 //setting error message
-// based on the error provided which is input control and save a reference for the input display which is inside inputControl as a div  
-const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
+// based on the error provided from the input control and save a reference for the input display which is inside inputControl as a div  
+const setError = (element, message) => { //function taking two parameters, the element input for which is validated and the error message it will display
+    const inputControl = element.parentElement; //retrieving parent element
+    const errorDisplay = inputControl.querySelector('.error'); //locating element 'error' in inputControl
 
     errorDisplay.innerText = message; //message to be provided in the parameter
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success'); //this will add red border to our input field
+    inputControl.classList.add('error'); //adding error class this will show the red border
+    inputControl.classList.remove('success'); //this will remove success class
 
 };
 
-// this is for successful input message
-const setSuccess = (element) => {
+// this is for successful input message similar setup to error message
+const setSuccess = (element) => { //no message needed
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
     errorDisplay.innerText= ''; //removed the error message
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
+    inputControl.classList.add('success'); //add success class will show the green border
+    inputControl.classList.remove('error'); //remove error class
 };
+
+//validation functions for each field are set up similarly whereby the
+// set up a function that is the value of the input element in the field of choice
+// field is checked if its empty checked for correct format
+// if successful will show success class if failed will show error class
 
 // validating email function
 const validateEmail = () => {
     const emailValue=email.value.trim(); //trim is used to get rid of the white space
     if(emailValue === '') {
-        setError(email, 'Email is required'); 
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address'); 
+        setError(email, 'Email is required'); //error message
+    } else if (!isValidEmail(emailValue)) { //checking for valid email format
+        setError(email, 'Provide a valid email address'); //error message
     } else {
-        setSuccess(email); 
+        setSuccess(email); //success message
     }
 }
 
@@ -98,10 +103,10 @@ const validatePassword = () => {
 // validating repeat password function
 const validatePassword2 = () => {
     const password2Value=password2.value.trim();
-    const passwordValue=password.value.trim();
+    const passwordValue=password.value.trim(); 
     if(password2Value === '') {
         setError(password2, 'Please confirm your password'); 
-    } else if (password2Value !== passwordValue) {
+    } else if (password2Value !== passwordValue) { //using passwordValue to check perfect matching
         setError(password2, 'Passwords do not match'); 
     } else {
         setSuccess(password2); 
@@ -137,15 +142,15 @@ const validateDOB = () => {
     const dobValue=dob.value.trim();
     if (dobValue === '') {
         setError(dob, 'Date of Birth is required');
-    } else if (!isValidDate(dobValue)) {
-        setError(dob, 'Invalid Date of Birth format or date');
+    } else if (!isValidDate(dobValue)) { //checking for valid date format and reasonable year
+        setError(dob, 'Invalid Date of Birth format or date, maximum age 80 years old');
     } else {
         setSuccess(dob);
     }
 }
 
 //Add event listeners to each field using validation function to immediately validate field
-email.addEventListener('change', validateEmail);
+email.addEventListener('change', validateEmail); //using change to check upon inputting something
 password.addEventListener('change', validatePassword);
 password2.addEventListener('change', validatePassword2);
 fname.addEventListener('change', validateFname);
@@ -156,7 +161,7 @@ dob.addEventListener('change', validateDOB);
 
  //Add event listener for when submit button is clicked
 form.addEventListener('submit', l => {
-    l.preventDefault(); //prevent the form submitting before validating the inputs
+    l.preventDefault(); //prevent the form submitting before validating the input, will show error message
 
     // validate inputs functions
     validateEmail();
@@ -166,7 +171,7 @@ form.addEventListener('submit', l => {
     validateLname();
     validateDOB();
 
-    if (document.querySelectorAll('.success').length === 6) {
+    if (document.querySelectorAll('.success').length === 6) { //ensuring 6 sucessful fields are met
          // submit the form
          form.submit();
      } 
