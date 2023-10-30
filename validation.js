@@ -19,9 +19,6 @@ var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 // valid name characters
 var namechar = /^[a-zA-Z-,]+(\s{0,1}[ '.\a-zA-Z-, ])*$/;
 
-//valid date format
-var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
-
 //setting up valid date format function
 function isValidDate(dateString) {
     // First check for the pattern to match dd/mm/yyyy format
