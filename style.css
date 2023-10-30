@@ -305,7 +305,7 @@ th, td {
 
 /* styling the input elements inside input control container */
  .input-control input {
-    border: 2px solid #f0f0f0;
+    border: 2px solid #f1f1f1;
 	border-radius: 4px;
 	display: block;
 	font-size: 12px;

@@ -39,7 +39,7 @@ function isValidDate(dateString) {
     if (
         date.getFullYear()=== year && date.getMonth() == month -1 && date.getDate() === day //checking for if the date exists
     ) {
-        //additional requirement DOB not too far in the past nor future date
+        //additional condition DOB not too far in the past nor future date
         const todayDate = new Date();
         const maxAge = new Date(todayDate);
         maxAge.setFullYear(todayDate.getFullYear()-80); // Allowing up to 80 years old
@@ -93,7 +93,7 @@ const validatePassword = () => {
     const passwordValue=password.value.trim();
     if(passwordValue === '') {
         setError(password, 'Password is required'); 
-    } else if (password.value.match(passw)) {
+    } else if (password.value.match(passw)) { //checking for matching format
         setSuccess(password); 
     } else {
         setError(password, 'Password must contain 8 characters, and include number, upper case, and lower case letter.'); 
